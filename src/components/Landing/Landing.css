@@ -1,0 +1,54 @@
+.landing {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 30px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 40px;
+}
+
+.footer {
+    border-top: 1px solid black;
+    border-top-color: black;
+    border-top-width: 100%;
+    margin-top: 90px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.logo {
+    padding: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.brand-logo {
+    margin-top: 30px;
+    margin-right: 25px;
+}
+
+.start-reading {
+    margin-top: 10px;
+    width: 24vw;
+    border-radius: 40px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    margin-left: 60px;
+    margin-bottom: -30px;
+}
