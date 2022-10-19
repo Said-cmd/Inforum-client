@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import "../Blogs/AddBlog.css";
 
 function AddBlog({ blogs, setBlogs }) {
+  const [isPublishing, setIsPublishing] = useState(false);
   const [postData, setPostData] = useState({
       title: "",
       content: "",
       likes: 0,
       minutes_to_read: 0
   }) 
-
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate()
 
@@ -22,6 +22,7 @@ function AddBlog({ blogs, setBlogs }) {
 
   function handleSubmit(e) {
       e.preventDefault()
+      setIsPublishing(true)
       console.log(postData) 
       fetch("/blogs",{
           method: "POST",
@@ -31,6 +32,7 @@ function AddBlog({ blogs, setBlogs }) {
           body: JSON.stringify(postData)
       }).then((r) => {
       if (r.ok) {
+          setIsPublishing(false)
           r.json().then(data=>setBlogs([...blogs, data ]))
         navigate("/blogs");
       } else {
@@ -74,13 +76,13 @@ function AddBlog({ blogs, setBlogs }) {
           >
           </textarea>
         </div>
-        <input className="publish" type='button' value="Publish" onClick={handleSubmit}/>
-      </form>
-      <div className="error-div">
+        <div className="error-div">
         {errors.map((err) => (
             <p key={err} style={{color: "red", alignContent: "center"}}>{err}</p>
         ))}
       </div>
+        <input className="publish" type='button' value={isPublishing ? "Publishing" : "Publish"} onClick={handleSubmit}/>
+      </form>
     </div>
   );
 }
