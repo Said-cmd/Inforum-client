@@ -66,3 +66,29 @@ textarea:focus {
     resize: none;
     outline-color: #008000;
 }
+
+@media screen and (max-width: 600px) {
+    .signup-form {
+        background: #FFFFFF;
+        border: 1px solid #787878;
+        border-radius: 7px;
+        background-color: white;
+        width: 90%;
+        height: 80%;
+        border-radius: 1em;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 20px;
+        margin-top: 50px;
+    }
+
+    input {
+        width: 60vw;
+        padding: 1em;
+        background: #FFFFFF;
+        border: 1px solid #787878;
+        border-radius: 7px;
+        color: black;
+        height: 50px;
+    }
+}
