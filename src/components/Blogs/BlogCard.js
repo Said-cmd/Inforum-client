@@ -33,6 +33,7 @@ function BlogCard({ blog, user, blogs, setBlogs }) {
         <div className="blog-user-date">
           <h4>{blog.user.username}</h4>
           <p>{createdDate}</p>
+          <p>{blog.minutes_to_read} min read</p>
         </div>
         <div className="blog-title">
             <h3>{blog.title}</h3>
