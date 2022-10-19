@@ -67,7 +67,7 @@ textarea:focus {
     outline-color: #008000;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .signup-form {
         background: #FFFFFF;
         border: 1px solid #787878;
