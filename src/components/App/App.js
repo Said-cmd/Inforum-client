@@ -72,6 +72,9 @@ function App() {
           </>
         )
         }
+        <div className="nav-toggle">
+          <div className="bar"></div>
+        </div>
       </nav>
     <div className='main'>
       <Routes>
