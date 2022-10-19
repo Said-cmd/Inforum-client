@@ -68,7 +68,7 @@ code {
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 25px;
 }
 
@@ -178,4 +178,23 @@ button {
   border-top: 1px solid black;
   border-top-color: black;
   margin-top: 90px;
+}
+
+@media screen and (max-width: 700px) {
+  .blog-main {
+    font-size: 20px;
+    width: 90%;
+    margin: 10px auto;
+    line-height: 1.5em;
+  }
+
+  .first-letter {
+    text-align: center;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    padding-top: 20px;
+    font-size: 20px;
+    width: 85px;
+    height: 70px;
+  }
 }
