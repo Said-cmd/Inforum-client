@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom"
 
 function EditBlog({ blogs, setBlogs }){
     const [errors, setErrors] = useState([]);
+    const [isPublishing, setIsPublishing] = useState(false);
     const params = useParams()
     const navigate = useNavigate()
     const [blog, setBlog] = useState({
@@ -53,6 +54,7 @@ function EditBlog({ blogs, setBlogs }){
 
     function handleSubmit(e){
         e.preventDefault()
+        setIsPublishing(true)
         fetch(`/blogs/${blog.id}`,{
             method: "PATCH",
             headers: {
@@ -62,6 +64,7 @@ function EditBlog({ blogs, setBlogs }){
         })
         .then(res=>{
             if(res.ok){
+                setIsPublishing(false)
                 res.json().then(data=>{
                     const updatedBlogs = blogs.map(item=>{
                         if (item.id === data.id ){
@@ -116,13 +119,13 @@ function EditBlog({ blogs, setBlogs }){
             onChange={handleChange}
           ></textarea>
         </div>
-        <input className="publish" type='button' value="Publish" onClick={handleSubmit}/>
-      </form>
-      <div>
+        <div>
         {errors.map((err) => (
             <p key={err} style={{color: "red"}}>{err}</p>
         ))}
       </div>
+        <input className="publish" type='button' value={isPublishing ? "Publishing" : "Publish"} onClick={handleSubmit}/>
+      </form>
     </div>
     )
 }
