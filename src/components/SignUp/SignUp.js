@@ -8,7 +8,7 @@ const SignUp = ({ onLogin }) => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
-    const [profilePhoto, setProfilePhoto] = useState('')
+    // const [profilePhoto, setProfilePhoto] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     const [errors, setErrors] = useState([]);
@@ -27,7 +27,7 @@ const SignUp = ({ onLogin }) => {
           email: email,
           password: password,
           password_confirmation: passwordConfirmation,
-          image_url: profilePhoto,
+          // image_url: profilePhoto,
         }),
       }).then((r) => {
         setIsLoading(false);
@@ -79,13 +79,13 @@ const SignUp = ({ onLogin }) => {
                 required 
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 />
-                <br></br>
+                {/* <br></br>
                 <input 
                 type="text" 
                 placeholder="Profile Photo" 
                 required 
                 onChange={(e) => setProfilePhoto(e.target.value)}
-                />
+                /> */}
                 <div>
                   {errors.map((err) => (
                     <p style={{ color: 'red'}}key={err}>{err}</p>
