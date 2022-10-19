@@ -17,7 +17,7 @@
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
-    margin-top: 100px;
+    margin-top: 45px;
 }
 
 .brand-header-login {
@@ -73,7 +73,7 @@ input[type=submit] {
     color: rgb(199, 10, 10);
 ;}
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 850px) {
     .loginform {
         background: #FFFFFF;
         border: 1px solid #787878;
@@ -85,6 +85,6 @@ input[type=submit] {
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 20px;
-        margin-top: 100px;
+        margin-top: 45px;
     }
 }
