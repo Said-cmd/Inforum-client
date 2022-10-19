@@ -91,4 +91,21 @@ textarea:focus {
         color: black;
         height: 50px;
     }
+
+    input:focus {
+        outline-color: #008000;
+    } 
+    
+    input[type=submit] {
+        width: 60vw;
+        background: #008000;
+        border-radius: 7px;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-size: 15px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        padding: 0.8em;
+    }
+
 }
