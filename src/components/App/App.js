@@ -1,5 +1,5 @@
 import { Routes, Route, Link } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Blogs from '../Blogs/Blogs';
 import Blog from '../Blogs/Blog';
 import Login from '../Login/Login';
@@ -8,13 +8,21 @@ import SignUp from '../SignUp/SignUp'
 import Landing from '../Landing/Landing';
 import EditBlog from '../Blogs/EditBlog';
 import { IoNewspaperSharp } from "react-icons/io5";
+import { IoReorderThreeOutline } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
 
 function App() {
   const [blogs, setBlogs] = useState([]) 
   const [search, setSearch] = useState('')
   const [user, setUser] = useState(null);
   const [comments, setComments] = useState([]) 
-  
+  const [toggle, setToggle] = useState(false);
+  const navRef = useRef();
+
+  function showNavBar() {
+    navRef.current.classList.toggle(".nav-item")
+  }
+
   useEffect(()=>{
     fetch("/blogs")
     .then(res => res.json())
@@ -42,6 +50,10 @@ function App() {
       }
     });
   }
+  function handleToggleNav() {
+    setToggle(!toggle)
+    showNavBar()
+  }
 
   return (
     <>
@@ -50,31 +62,35 @@ function App() {
       <div className="spacer-left"></div>
         <Link to="/" style={{ textDecoration: 'none', color: "green" }}>
           <div className="brand">
-              <IoNewspaperSharp color="green" size="4rem" />
+              <IoNewspaperSharp onClick={handleToggleNav} color="green" size="4rem" />
               <h1 className="brand-header">Inforum</h1>
               </div>
               </Link>
+              <div className="toggle">
+               {toggle ? <IoCloseOutline onClick={handleToggleNav} color="green" size="4rem" /> : <IoReorderThreeOutline onClick={handleToggleNav} color="green" size="4rem"/>}
+              </div>
               <div className="spacer"></div>
         {user ? (
         <>
-          <Link className="nav-item" to="/blogs" style={{ textDecoration: 'none', color: "green" }}>Blogs</Link>
-          <Link className="nav-item" to="/new-idea" style={{ textDecoration: 'none', color: "green" }}>Write</Link>
-          <Link className="nav-item" to="/" onClick={handleLogoutClick} style={{ textDecoration: 'none', color: "green" }}><input className="get-started" type="button" value="Logout"/></Link>
+          <div className="blogs">
+          <Link onClick={handleToggleNav} className={toggle ? "nav-item" : "nav-item-responsive"} to="/blogs" style={{ textDecoration: 'none', color: "green" }}>Blogs</Link>
+          </div>
+          <div className="write">
+          <Link onClick={handleToggleNav} className={toggle ? "nav-item" : "nav-item-responsive"}  to="/new-idea" style={{ textDecoration: 'none', color: "green" }}>Write</Link>
+          </div>
+          <Link className={toggle ? "nav-item" : "nav-item-responsive"}  to="/" onClick={handleLogoutClick} style={{ textDecoration: 'none', color: "green" }}><input onClick={handleToggleNav} className="get-started" type="button" value="Logout"/></Link>
           <div className="spacer-right"></div>
         </>
         )
         :
         (
           <>
-            <Link className="nav-item" to="/login" style={{ textDecoration: 'none', color: "green" }}>Sign in</Link>
-            <Link className="nav-item" to="/signup" style={{ textDecoration: 'none', color: "green" }}><input className="get-started" type="button" value="Get started"/></Link>
+            <div className="sign-in"><Link onClick={handleToggleNav} className={toggle ? "nav-item" : "nav-item-responsive"}  to="/login" style={{ textDecoration: 'none', color: "green" }}>Sign in</Link></div>
+            <Link className={toggle ? "nav-item" : "nav-item-responsive"}  to="/signup" style={{ textDecoration: 'none', color: "green" }}><input onClick={handleToggleNav} className="get-started" type="button" value="Get started"/></Link>
             <div className="spacer-right"></div>
           </>
         )
         }
-        <div className="nav-toggle">
-          <div className="bar"></div>
-        </div>
       </nav>
     <div className='main'>
       <Routes>
