@@ -27,7 +27,6 @@ code {
 }
 
 .blog-specific {
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -63,12 +62,11 @@ code {
 }
 
 .blog-title {
-  font-family: 'Roboto';
   text-align: center;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 25px;
 }
 
@@ -117,8 +115,20 @@ nav {
   margin-right: 10px;
 }
 
+.nav-item-responsive {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 21px;
+  margin-right: 10px;
+}
+
 button {
   margin-right: 20px;
+}
+
+.toggle {
+  display: none;
 }
 
 .blog {
@@ -177,10 +187,19 @@ button {
 .footer {
   border-top: 1px solid black;
   border-top-color: black;
-  margin-top: 90px;
+  border-top-width: 100%;
+  margin-top: 400px;
 }
 
-@media screen and (max-width: 700px) {
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 21px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 850px) {
   .blog-main {
     font-size: 20px;
     width: 90%;
@@ -196,5 +215,57 @@ button {
     font-size: 20px;
     width: 85px;
     height: 70px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .spacer{
+    display: none;
+  }
+
+  .get-started {
+    width: 118px;
+    border-radius: 40px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    margin-top: -12px;
+  }  
+  
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-bottom-color: black;
+    border-top-width: 100%;
+    margin-top: 10px;
+  }
+  
+  .nav-item-responsive {
+    display: none;
+  }
+
+  .sign-in {
+    margin-left: 2rem;
+  }
+
+  .blogs {
+    margin-left: 2rem;
+  }
+
+  .write {
+    margin-left: 2rem;
+  }
+
+  .toggle {
+    margin-top: 2px;
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+    cursor: pointer;
   }
 }
