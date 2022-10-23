@@ -50,9 +50,14 @@ function App() {
       }
     });
   }
+
   function handleToggleNav() {
     setToggle(!toggle)
     showNavBar()
+  }
+
+  function closeToggle() {
+    setToggle(false)
   }
 
   return (
@@ -62,8 +67,8 @@ function App() {
       <div className="spacer-left"></div>
         <Link to="/" style={{ textDecoration: 'none', color: "green" }}>
           <div className="brand">
-              <IoNewspaperSharp onClick={handleToggleNav} color="green" size="4rem" />
-              <h1 className="brand-header">Inforum</h1>
+              <IoNewspaperSharp onClick={closeToggle} color="green" size="4rem" />
+              <h1 className="brand-header" onClick={closeToggle}>Inforum</h1>
               </div>
               </Link>
               <div className="toggle">
