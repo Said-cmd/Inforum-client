@@ -23,7 +23,7 @@ function EditBlog({ blogs, setBlogs }){
     });
 
     useEffect(() => {
-      fetch(`/blogs/${params.id}`)
+      fetch(`https://inforum-blog-api.herokuapp.com/blogs/${params.id}`)
         .then((res) => res.json())
         .then((data) => {
           setBlog(data)
@@ -55,7 +55,7 @@ function EditBlog({ blogs, setBlogs }){
     function handleSubmit(e){
         e.preventDefault()
         setIsPublishing(true)
-        fetch(`/blogs/${blog.id}`,{
+        fetch(`https://inforum-blog-api.herokuapp.com/blogs/${blog.id}`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

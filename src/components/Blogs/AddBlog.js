@@ -24,7 +24,7 @@ function AddBlog({ blogs, setBlogs }) {
       e.preventDefault()
       setIsPublishing(true)
       console.log(postData) 
-      fetch("/blogs",{
+      fetch("https://inforum-blog-api.herokuapp.com/blogs",{
           method: "POST",
           headers: {
               "Content-Type": "application/json"

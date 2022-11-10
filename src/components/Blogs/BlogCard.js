@@ -9,7 +9,7 @@ function BlogCard({ blog, user, blogs, setBlogs }) {
   const navigate = useNavigate()
 
   function handleDelete(){
-    fetch(`/blogs/${blog.id}`, {
+    fetch(`https://inforum-blog-api.herokuapp.com/blogs/${blog.id}`, {
       method: "DELETE"
     })
     .then(res=> {

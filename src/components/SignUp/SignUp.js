@@ -17,7 +17,7 @@ const SignUp = ({ onLogin }) => {
       e.preventDefault();
       setIsLoading(true);
       setErrors([]);
-      fetch('/signup', {
+      fetch('https://inforum-blog-api.herokuapp.com/signup', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

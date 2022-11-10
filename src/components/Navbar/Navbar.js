@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoNewspaperSharp } from "react-icons/io5";
 
 const Navbar = ({ user, setUser }) => {
+  const navigate = useNavigate()
 
     function handleLogoutClick() {
-        fetch("/logout", { method: "DELETE" }).then((r) => {
+        fetch("https://inforum-blog-api.herokuapp.com/logout", { method: "DELETE" }).then((r) => {
           if (r.ok) {
             setUser(null);
+            navigate("/")
           }
         });
       }

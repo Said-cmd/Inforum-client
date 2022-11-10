@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from 'react';
 import Blogs from '../Blogs/Blogs';
 import Blog from '../Blogs/Blog';
@@ -17,6 +17,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [comments, setComments] = useState([]) 
   const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate()
   const navRef = useRef();
 
   function showNavBar() {
@@ -24,13 +25,13 @@ function App() {
   }
 
   useEffect(()=>{
-    fetch("/blogs")
+    fetch("https://inforum-blog-api.herokuapp.com/blogs")
     .then(res => res.json())
     .then(data => setBlogs(data))
   }, [])
 
   useEffect(() => {
-    fetch("/me").then((r) => {
+    fetch("https://inforum-blog-api.herokuapp.com/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
@@ -38,15 +39,16 @@ function App() {
   }, []);
 
   useEffect(()=>{
-    fetch("/comments")
+    fetch("https://inforum-blog-api.herokuapp.com/comments")
     .then(res => res.json())
     .then(data => setComments(data))
   },[])
 
   function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+    fetch("https://inforum-blog-api.herokuapp.com/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
+        navigate("/")
       }
     });
   }
