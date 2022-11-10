@@ -31,7 +31,7 @@ const LoginForm = ({ onLogin }) => {
       }
     });
   }
-console.log(errors)
+  
   return (
     <div className="loginform">
       <div className="login-head">
