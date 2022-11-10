@@ -31,7 +31,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch("https://inforum-blog-api.herokuapp.com/me").then((r) => {
+    fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
