@@ -10,6 +10,7 @@ import EditBlog from '../Blogs/EditBlog';
 import { IoNewspaperSharp } from "react-icons/io5";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
+import NotAuthorized from "../NotAuthorized/NotAuthorized";
 
 function App() {
   const [blogs, setBlogs] = useState([]) 
@@ -103,11 +104,11 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Landing user={user}/>}/>
         <Route exact path='/login' element={<Login onLogin={setUser}/>}/>
-        <Route exact path='/blogs' element={<Blogs blogs={blogs} setSearch={setSearch} search={search} user={user}/>}/>
-        <Route exact path='/new-idea' element={<AddBlog setBlogs={setBlogs} blogs={blogs}/>}/>
-        <Route exact path='/blogs/:id' element={<Blog blogs={blogs} comments={comments} user={user} setBlogs={setBlogs}/>}/>
+        {user ? (<Route exact path='/blogs' element={<Blogs blogs={blogs} setSearch={setSearch} search={search} user={user}/>}/>) : (<Route exact path="/blogs" element={<NotAuthorized />}/>)}
+        {user ? (<Route exact path='/new-idea' element={<AddBlog setBlogs={setBlogs} blogs={blogs}/>}/>) : (<Route exact path="/new-idea" element={<NotAuthorized />}/>)}
+        {user ? (<Route exact path='/blogs/:id' element={<Blog blogs={blogs} comments={comments} user={user} setBlogs={setBlogs}/>}/>) : (<Route exact path="/blogs/:id" element={<NotAuthorized />}/>)}
         <Route exact path='/signup' element={<SignUp onLogin={setUser}/>}/>
-        <Route exact path='/editblog/:id' element={<EditBlog blogs={blogs} setBlogs={setBlogs}/>}/>
+        {user ? (<Route exact path='/editblog/:id' element={<EditBlog blogs={blogs} setBlogs={setBlogs}/>}/>) : (<Route exact path="/editblog/:id" element={<NotAuthorized />}/>)}
       </Routes>
     </div>
     </div>
